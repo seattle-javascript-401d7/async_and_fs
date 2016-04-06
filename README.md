@@ -8,8 +8,9 @@
   * submit a link to your PR in canvas
 
 ##Description:
-For this assignment you will need to read three files and console long them and 
-guarantee that three files are read and console logged in the 
+For this assignment you will need to read three files and console 
+log the first 8 bytes in hex of each file.
+Also, you must guarantee that three files are read and console logged in the 
 order `'one.txt', 'two.txt', 'three.txt'` regardless of file size. 
 
 You can use any method of handling async except nested callback. For a bonus
