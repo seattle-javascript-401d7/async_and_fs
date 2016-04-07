@@ -1,0 +1,12 @@
+CSo this is the tale of our castaways they're here for a long long time. They'll have to make the best of things its an uphill climb. As long as we live its you and me baby. There ain't nothin' wrong with that. Well we're movin' on up to the east side to a deluxe apartment in the sky., A man is born he's a man of means. Then along come two they got nothin' but their jeans!
+function (err, three) {
+    if (err) return err;
+    fs.writeFile('results.txt', three.toString('hex', 0 , 8), (err) => {
+      if (err) return err;
+    });
+  }function (err, three) {
+    if (err) return err;
+    fs.writeFile('results3.txt', three.toString('hex', 0 , 8), (err) => {
+      if (err) return err;
+    });
+  }
