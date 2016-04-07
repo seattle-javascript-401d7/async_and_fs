@@ -1,4 +1,6 @@
 const fs = require('fs');
 const EE = require('events');
 
-var ee = new EE();
+const ee = module.exports = new EE();
+
+ee.files = ['three.txt','two.txt','one.txt'];

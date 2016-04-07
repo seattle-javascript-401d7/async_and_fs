@@ -1,2 +1,2 @@
 #!/usr/bin/env node
-const Greeting = require(__dirname + '/../lib/read');
+var ee = require(__dirname + '/../lib/read');
