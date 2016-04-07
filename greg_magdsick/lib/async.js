@@ -15,8 +15,8 @@ module.exports = exports = ee.on('done', (fileArray) => {
   fs.readFile(nextFile, (err, data) => {
     if (err) return console.log(err);
 
-    console.log('first 8 bits in hex of ' + nextFile + ': ' + data.toString('hex').slice(0,2));
-    ee.results.push(data.toString('hex').slice(0,2))
+    console.log('first 8 bits in hex of ' + nextFile + ': ' + data.toString('hex',0,8));
+    ee.results.push(data.toString('hex',0,8))
     ee.emit('done', fileArray);
   });
 });
