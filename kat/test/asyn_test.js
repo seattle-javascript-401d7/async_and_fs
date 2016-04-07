@@ -12,8 +12,8 @@ describe('First File should', function () {
       expect(err).to.eql(null);
       done();
     });
-    });
   });
+});
 
 describe('Second file should', function () {
   it('console.log should read "46696c652074776f"', function (done) {
@@ -34,6 +34,5 @@ describe('Third file should', function () {
       expect(err).to.eql(null);
       done();
     });
-
   });
 });
