@@ -9,7 +9,6 @@ app.hexified = (data) => {
 app.answer = [];
 
 app.readOne = function() {
-
   fs.readFile('one.txt', (err, data) => {
     if (err) return console.log(err);
 
