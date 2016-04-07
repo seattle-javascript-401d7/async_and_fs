@@ -1,3 +1,11 @@
+##Async with tests assignment
+###regardless of file size they will return in order
+in terminal: node index
+
+### mocha test indicates that data is being read from files.
+Proof of file order is still in development
+
+
 #FS and Async DUE: April 7, 2016 by 1pm (class start)
 
 ##To Submit this Assignment
@@ -8,13 +16,14 @@
   * submit a link to your PR in canvas
 
 ##Description:
-For this assignment you will need to read three files and console 
+For this assignment you will need to read three files and console
 log the first 8 bytes in hex of each file.
-Also, you must guarantee that three files are read and console logged in the 
-order `'one.txt', 'two.txt', 'three.txt'` regardless of file size. 
+Also, you must guarantee that three files are read and console logged in the
+order `'one.txt', 'two.txt', 'three.txt'` regardless of file size.
 
-You can use any method of handling async except nested callback. For a bonus
-point don't use event emitters either. 
+You can use any method of handling async except nested callback.
+
+For a bonus point don't use event emitters either.
 
 You will also need to look up and implement async testing, making sure that
 you are not getting "false positives"(tests that are passing but shouldn't be).
