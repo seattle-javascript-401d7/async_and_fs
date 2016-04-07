@@ -1,0 +1,5 @@
+var troop = {
+  'this': 1,
+  'that': 2,
+  'the other': 3
+};
