@@ -1,0 +1,25 @@
+{
+  "name": "james_norton_async_homework",
+  "version": "1.0.0",
+  "description": "Ascyn and FS Project for JS401",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jimmynono/async_and_fs.git"
+  },
+  "author": "James Norton mrjamesnorton@gmail.com",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jimmynono/async_and_fs/issues"
+  },
+  "homepage": "https://github.com/jimmynono/async_and_fs#readme",
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "gulp": "^3.9.1",
+    "gulp-eslint": "^2.0.0",
+    "gulp-mocha": "^2.2.0"
+  }
+}
