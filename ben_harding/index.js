@@ -1,9 +1,20 @@
-const filePull = require(__dirname + '/lib/filePull');
+const fs = require('fs');
+const EE = require('events');
 
-var files = ['one.txt', 'two.txt', 'three.txt'];
+var ee = new EE();
 
-files.forEach(function(ele) {
-  filePull(ele).then(function(data) {
-    console.log(data.toString('hex', 0, 8) + ' ' + ele);
+ee.on('dowork', fileArray => {
+  var workFile = fileArray.pop();
+  if (!workFile) return;
+
+  fs.readFile(workFile, (err, data) => {
+    if (err) return console.log(err);
+
+    console.log(data.toString('hex', 0, 8) + ' ' + workFile);
+    ee.emit('dowork', fileArray);
   });
 });
+
+var files = ['three.txt', 'two.txt', 'one.txt'];
+
+ee.emit('dowork', files);
