@@ -4,29 +4,17 @@ const EE = require('events')
 var ee = new EE();
 var results = [];
 
-fs.readFile('one.txt', (err, data) => {
-  if(err) console.log(err);
-  var buffer = Buffer(data)
-  console.log('first 8 bits in hex of one.txt: ' + data.toString('hex').slice(0,2));
-  results.push(data.toString('hex').slice(0,2));
-  ee.emit('oneDone');
-});
+ee.on('done', (fileArray) => {
+  var nextFile = fileArray.pop();
+  if (!nextFile) return console.log('done, results array: [' + results + ']');
+  fs.readFile(nextFile, (err, data) => {
+    if (err) return console.log(err);
 
-ee.on('oneDone', () => {
-  fs.readFile('two.txt', (err, data) => {
-    if(err) console.log(err);
-    var buffer = Buffer(data)
-    console.log('first 8 bits in hex of two.txt: ' + buffer.toString('hex').slice(0,2));
-    results.push(data.toString('hex').slice(0,2));
-    ee.emit('twoDone');
+    console.log('first 8 bits in hex of ' + nextFile + ': ' + data.toString('hex').slice(0,2));
+    results.push(data.toString('hex').slice(0,2))
+    ee.emit('done', fileArray);
   });
 });
 
-ee.on('twoDone', () => {
-  fs.readFile('three.txt', (err, data) => {
-    if(err) console.log(err);
-    var buffer = Buffer(data)
-    console.log('first 8 bits in hex of three.txt: ' + buffer.toString('hex').slice(0,2));
-    results.push(data.toString('hex').slice(0,2));
-  });
-});
+var files = ['three.txt', 'two.txt', 'one.txt'];
+ee.emit('done', files);
