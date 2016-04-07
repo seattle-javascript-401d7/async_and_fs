@@ -16,20 +16,20 @@ describe('file pull stuff', () => {
 });
 
 describe('attempting to promise test', () => {
-  var outputString = '';
+  var outputArray = [];
 
   before(function(done) {
     Promise.all(promiseArray).then(function(allPromises) {
-      outputString = allPromises.reduce(function(acc, curr) {
-        return acc + curr[1];
-      }, '');
+      allPromises.forEach(function(ele) {
+        outputArray.push(ele[0].toString('hex', 0, 8) + ' ' + ele[1]);
+      });
     });
 
     done();
   });
 
   it('should output the files in order', function(done) {
-    expect(outputString).to.eql('one.txttwo.txtthree.txt');
+    expect(outputArray).to.eql(['6f6e65206f6e6520 one.txt', '74776f2074776f20 two.txt', '7468726565207468 three.txt']);
     done();
   });
 });
