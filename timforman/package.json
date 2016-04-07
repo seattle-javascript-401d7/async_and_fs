@@ -1,0 +1,26 @@
+{
+  "name": "async_and_fs",
+  "version": "1.0.0",
+  "description": "FS and Async DUE: April 7, 2016 by 1pm (class start)",
+  "main": "async.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/T4Man/async_and_fs.git"
+  },
+  "author": "timforman <timothywforman@gmail.com> (https://salty-brook-43242.herokuapp.com/)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/T4Man/async_and_fs/issues"
+  },
+  "homepage": "https://github.com/T4Man/async_and_fs#readme",
+  "dependencies": {
+    "fs": "0.0.2"
+  },
+  "devDependencies": {
+    "chai": "3.5.0",
+    "mocha": "2.4.5"
+  }
+}
