@@ -11,7 +11,7 @@ describe('async test', () => {
   it('one.txt fires first', (done) => {
     fs.readFile('one.txt', (err, data) => {
       ee.on('finished', (fileArray, results) => {
-        expect(data.toString('hex',0,8)).to.eql(ee.results[0]);
+        expect(data.toString('hex',0,16)).to.eql(ee.results[0]);
         done();
       })
     })
