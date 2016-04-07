@@ -1,0 +1,26 @@
+{
+  "name": "asyn_and_fs",
+  "version": "1.0.0",
+  "description": "Async and FS assignment with testing",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AlegriaForman/async_and_fs.git"
+  },
+  "author": "Ali Forman",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/AlegriaForman/async_and_fs/issues"
+  },
+  "homepage": "https://github.com/AlegriaForman/async_and_fs#readme",
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "mocha": "^2.4.5"
+  },
+  "dependencies": {
+    "fs": "0.0.2"
+  }
+}
