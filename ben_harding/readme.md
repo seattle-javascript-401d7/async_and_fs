@@ -3,3 +3,4 @@
 
 #### functionality
 * Run this module by doing a ``` node index.js ```
+* Run a super cool extra module using promises by doing a ``` node index2.js ```
