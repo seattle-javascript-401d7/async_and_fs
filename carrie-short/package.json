@@ -1,0 +1,25 @@
+{
+  "name": "read-files",
+  "version": "1.0.0",
+  "description": "an app designed to read and console.log the contents of 3 files in order.",
+  "main": "index.js",
+  "bin": {
+    "read-files": "read.js"
+  },
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/CarrieShort/async_and_fs.git"
+  },
+  "author": "Carrie Short",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/CarrieShort/async_and_fs/issues"
+  },
+  "homepage": "https://github.com/CarrieShort/async_and_fs#readme"
+}
