@@ -1,2 +1,1 @@
-var stuffs = 'three things';
-var things = 'more than three things';
+This is test two.
