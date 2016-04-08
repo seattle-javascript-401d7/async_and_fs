@@ -1,16 +1,26 @@
-const async = require(__dirname + '/../lib/async');
+const Async = require(__dirname + '/../lib/async');
 const expect = require('chai').expect;
-// const fs = require('fs');
-// const EE = require('events');
 
-// const ee = new EE();
 
 describe('async test', () => {
-  it('files log in order', () => {
-    async.emit('done', async.files);
-    // ee.on('finished', () => {
-      expect(async.results).to.eql(['efbfbdefbfbdefbf', '0c5fefbfbdefbfbd', 'efbfbd3eefbfbdef']);
-      // done();
-    // });
+  debugger;
+  beforeEach(() => {
+    this.fileArray = [__dirname + '/../three.txt',
+                      __dirname + '/../two.txt',
+                      __dirname + '/../one.txt'];
+    this.testSpace = {
+      data: '',
+      write: function(input) {
+        this.data += input;
+      }
+    };
+  });
+  it('files log in order', (done) => {
+    var async = new Async(this.fileArray, (stream) => {
+// below, .eql(stuff) is first 8 bits in hex for each file concatenated with done
+      expect(stream.data).to.eql('efbfbdefbfbdefbf0c5fefbfbdefbfbdefbfbd3eefbfbdefdone');
+      done();
+    }, this.testSpace);
+    async.init();
   });
 });
