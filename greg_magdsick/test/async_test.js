@@ -3,7 +3,6 @@ const expect = require('chai').expect;
 
 
 describe('async test', () => {
-  debugger;
   beforeEach(() => {
     this.fileArray = [__dirname + '/../three.txt',
                       __dirname + '/../two.txt',
