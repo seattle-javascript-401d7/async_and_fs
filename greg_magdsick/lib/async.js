@@ -2,11 +2,11 @@ const fs = require('fs');
 const EE = require('events');
 
 
-var ee = new EE();
+var ee = module.exports = exports = new EE();
 ee.results = [];
 ee.files = ['three.txt', 'two.txt', 'one.txt'];
 
-module.exports = exports = ee.on('done', (fileArray) => {
+ee.on('done', (fileArray) => {
   var nextFile = fileArray.pop();
   if (!nextFile) {
     ee.emit('finished');
@@ -15,8 +15,8 @@ module.exports = exports = ee.on('done', (fileArray) => {
   fs.readFile(nextFile, (err, data) => {
     if (err) return console.log(err);
 
-    console.log('first 8 bits in hex of ' + nextFile + ': ' + data.toString('hex',0,16));
-    ee.results.push(data.toString('hex',0,16))
+    console.log('first 8 bits in hex of ' + nextFile + ': ' + data.toString('hex', 0, 8));
+    ee.results.push(data.toString('hex', 0, 8));
     ee.emit('done', fileArray);
   });
 });
