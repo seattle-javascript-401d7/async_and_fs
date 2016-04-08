@@ -2,23 +2,32 @@ const fs = require('fs');
 const EE = require('events');
 
 
-var ee = module.exports = exports = new EE();
-ee.results = [];
-ee.files = ['three.txt', 'two.txt', 'one.txt'];
+const ShowFile = module.exports = exports = function(fileArray, cb, writeSpace) {
+  this.fileArray = fileArray;
+  this.ee = new EE();
+  this.cb = cb;
+  this.writeSpace = writeSpace || process.stdout;
 
-ee.on('done', (fileArray) => {
-  var nextFile = fileArray.pop();
-  if (!nextFile) {
-    ee.emit('finished', fileArray);
-    return console.log('done, results array: [' + ee.results + ']');
-  }
-  fs.readFile(nextFile, (err, data) => {
-    if (err) return console.log(err);
+  this.ee.on('done', (files) => {
+    var nextFile = fileArray.pop();
+    if (!nextFile) {
+      this.writeSpace.write('done');
+      return this.cb(this.writeSpace);
+    }
 
-    console.log('first 8 bits in hex of ' + nextFile + ': ' + data.toString('hex', 0, 8));
-    ee.results.push(data.toString('hex', 0, 8));
-    ee.emit('done', fileArray);
+    fs.readFile(nextFile, (err, data) => {
+      if (err) return process.stderr.write(err);
+
+      this.writeSpace.write(data.toString('hex', 0, 8));
+      this.ee.emit('done', files);
+    });
   });
-});
+};
 
-ee.emit('done', ee.files);
+ShowFile.prototype.init = function() {
+  this.ee.emit('done', this.files);
+};
+
+var files = ['three.txt', 'two.txt', 'one.txt'];
+var sf = new ShowFile(files, () => {});
+sf.init();
