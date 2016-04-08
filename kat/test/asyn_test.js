@@ -4,6 +4,9 @@ const EventEmitter = require('events');
 
 const emitter = new EventEmitter();
 
+describe('Correct order of results', function () {
+  it('the order of the results is "46696c65204f6e65", "46696c652074776f", "66696c6520332068"', function (done) {
+    expect(order).to.eql(correctOrder);
 var order = [];
 var correctOrder = ['46696c65204f6e65', '46696c652074776f', '66696c6520332068'];
 
@@ -43,10 +46,7 @@ describe('Third file should', function () {
   });
 });
 
-describe('Correct order of results', function () {
-  it('the order of the results is "46696c65204f6e65", "46696c652074776f", "66696c6520332068"', function (done) {
-    expect(order).to.eql(correctOrder);
-    expect(true).to.eql(false);
+    // expect(true).to.eql(false);
     done();
   });
 });
