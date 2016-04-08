@@ -1,29 +1,35 @@
-module.exports = exports = function () {
-  const fs = require('fs');
-  const EE = require('events');
+const fs = require('fs');
+const EE = require('events');
 
-  var ee = new EE();
-  var testArray = [];
 
-  ee.on('done', (fileArray) => {
+const FileReader = module.exports = exports = function (files, cb) {
+  this.ee = new EE();
+  this.files = files;
+  this.testString = [];
+  this.cb = cb;
+
+  this.ee.on('done', (fileArray) => {
     var nextFile = fileArray.pop();
 
-    if (!nextFile) return console.log('done');
+    if (!nextFile) {
+      return  this.cb(this.testString);
+    }
     fs.readFile(nextFile, (err, data) => {
       if (err) return console.log(err);
 
       var bufData = data.toString('hex', 0, 8);
-
-      testArrayBuilder(bufData);
+      var bufTestData = data.toString();
+      this.testString += bufTestData;
       console.log(bufData);
-      ee.emit('done', fileArray);
+      this.ee.emit('done', fileArray);
     });
   });
 
-  function testArrayBuilder (string) {
-    return testArray.push(string);
-  }
-
-  var files = ['three.txt', 'two.txt', 'one.txt'];
-  ee.emit('done', files);
+  FileReader.prototype.start = function () {
+    this.ee.emit('done', this.files);
+  };
 };
+
+var files = ['three.txt', 'two.txt', 'one.txt'];
+var fr = new FileReader(files, ()=> {});
+fr.start();
