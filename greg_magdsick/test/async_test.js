@@ -5,11 +5,12 @@ const expect = require('chai').expect;
 
 // const ee = new EE();
 
-
 describe('async test', () => {
-  it('files log in order', (done) => {
+  it('files log in order', () => {
     async.emit('done', async.files);
-    expect(async.results).to.eql(['efbfbdefbfbdefbf', '0c5fefbfbdefbfbd', 'efbfbd3eefbfbdef']);
-    done();
-      });
+    // ee.on('finished', () => {
+      expect(async.results).to.eql(['efbfbdefbfbdefbf', '0c5fefbfbdefbfbd', 'efbfbd3eefbfbdef']);
+      // done();
+    // });
+  });
 });

@@ -9,7 +9,7 @@ ee.files = ['three.txt', 'two.txt', 'one.txt'];
 ee.on('done', (fileArray) => {
   var nextFile = fileArray.pop();
   if (!nextFile) {
-    ee.emit('finished');
+    ee.emit('finished', fileArray);
     return console.log('done, results array: [' + ee.results + ']');
   }
   fs.readFile(nextFile, (err, data) => {
