@@ -13,7 +13,7 @@ describe("async order", () => {
 
   it("should return hex strings in order", (done) => {
     var fp = new FileParser(this.files, function () {
-      expect(this.printString).to.eql("6f6e650a, 74776f2074776f20, 74687265650a");
+      expect(this.parsedString).to.eql("6f6e650a, 74776f2074776f20, 74687265650a");
       done();
     }, this.testStream);
     fp.start();

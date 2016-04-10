@@ -5,14 +5,14 @@ const FileParser = module.exports = function (files, cb, writeStream) {
   this.cb = cb;
   this.writeStream = writeStream || process.stdout;
   this.parsed = 0;
-  this.readArray = [];
-  this.printString = [];
+  this.parsedArray = [];
+  this.parsedString = [];
 };
 
 FileParser.prototype.start = function () {
   var file;
 
-  for (var i = 2; i >= 0; i--) {
+  for (var i = this.files.length - 1; i >= 0; i--) {
     file = this.files.pop();
 
     ((i, file) => {
@@ -21,12 +21,12 @@ FileParser.prototype.start = function () {
           return process.stderr.write(err);
         }
 
-        this.readArray[i] = data.toString("hex", 0, 8);
+        this.parsedArray[i] = data.toString("hex", 0, 8);
         this.parsed++;
 
         if (this.parsed === 3) {
-          this.printString = this.readArray.reverse().join(", ");
-          this.writeStream.write(this.printString + "\n");
+          this.parsedString = this.parsedArray.reverse().join(", ");
+          this.writeStream.write(this.parsedString + "\n");
           return this.cb();
         }
       });
