@@ -5,35 +5,36 @@ const FileParser = module.exports = function (files, cb, writeStream) {
   this.cb = cb;
   this.writeStream = writeStream || process.stdout;
   this.parsed = 0;
-  this.parsedArray = [];
-  this.parsedString = [];
+  this.parsedTextArr = [];
+  this.parsedHexArr = [];
+  this.combTextStr = "";
+  this.combHexStr = "";
 };
 
 FileParser.prototype.start = function () {
-  var file;
-
-  for (var i = this.files.length - 1; i >= 0; i--) {
-    file = this.files.pop();
-
+  for (var i = 0; i < this.files.length; i++) {
     ((i, file) => {
       fs.readFile(file, (err, data) => {
         if (err) {
           return process.stderr.write(err);
         }
 
-        this.parsedArray[i] = data.toString("hex", 0, 8);
+        this.parsedTextArr[i] = data.toString("utf-8", 0, 8);
+        this.parsedHexArr[i] = data.toString("hex", 0, 8);
         this.parsed++;
 
-        if (this.parsed === 3) {
-          this.parsedString = this.parsedArray.reverse().join(", ");
-          this.writeStream.write(this.parsedString + "\n");
+        if (this.parsed === this.files.length) {
+          this.combTextStr = this.parsedTextArr.join(", ");
+          this.combHexStr = this.parsedHexArr.join(", ");
+          this.writeStream.write(this.combTextStr + "\n");
+          this.writeStream.write(this.combHexStr + "\n");
           return this.cb();
         }
       });
-    })(i, file);
+    })(i, this.files[i]);
   }
 };
 
-var files = ["three.txt", "two.txt", "one.txt"];
+var files = ["one.txt", "two.txt", "three.txt"];
 var fp = new FileParser(files, () => {});
 fp.start();
