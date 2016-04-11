@@ -6,6 +6,9 @@
   "directories": {
     "test": "test"
   },
+  "bin": {
+    "async": "./bin/async"
+  },
   "scripts": {
     "test": "./node_modules/mocha/bin/mocha"
   },

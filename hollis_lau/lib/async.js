@@ -34,7 +34,3 @@ FileParser.prototype.start = function () {
     })(i, this.files[i]);
   }
 };
-
-var files = ["one.txt", "two.txt", "three.txt"];
-var fp = new FileParser(files, () => {});
-fp.start();

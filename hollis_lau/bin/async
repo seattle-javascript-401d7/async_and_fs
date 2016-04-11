@@ -1,0 +1,10 @@
+#!/usr/bin/env node
+
+var FileParser = require(__dirname + "/../lib/async");
+
+var files = [__dirname + "/../one.txt",
+             __dirname + "/../two.txt",
+             __dirname + "/../three.txt"];
+var fp = new FileParser(files, () => {});
+
+fp.start();
