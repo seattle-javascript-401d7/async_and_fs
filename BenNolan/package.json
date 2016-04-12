@@ -1,0 +1,25 @@
+{
+  "name": "async_and_fs",
+  "version": "1.0.0",
+  "description": "A cool file reader",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bonecrushereb/async_and_fs.git"
+  },
+  "author": "bnolancgartist@gmail.com",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/bonecrushereb/async_and_fs/issues"
+  },
+  "homepage": "https://github.com/bonecrushereb/async_and_fs#readme",
+  "devDependencies": {
+    "chai": "^3.5.0"
+  }
+}
