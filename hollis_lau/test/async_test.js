@@ -3,9 +3,9 @@ const FileParser = require(__dirname + "/../lib/async");
 
 describe("async order", () => {
   beforeEach(() => {
-    this.files = [__dirname + "/one.txt",
-                  __dirname + "/two.txt",
-                  __dirname + "/three.txt"];
+    this.files = [__dirname + "/files/one.txt",
+                  __dirname + "/files/two.txt",
+                  __dirname + "/files/three.txt"];
     this.testStream = {
       write: function () {}
     };
