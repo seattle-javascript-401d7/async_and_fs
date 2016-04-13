@@ -1,22 +1,28 @@
+'use strict';
 const EE = require('events');
 const fs = require('fs');
 
-var ee = module.exports = new EE();
-  ee.newArray = [];
 
+const FileParser = module.exports = function(files, cb, writeStream) {
+  this.ee = new EE();
+  this.files = files;
+  this.cb = cb;
+  this.writeStream = writeStream || process.stdout;
 
-  ee.on('done', (fileArray) => {
+  this.ee.on('done', (fileArray) => {
     var nextFile = fileArray.pop();
-    if (!nextFile) return console.log('done');
+    if (!nextFile) {
+      this.writeStream.write('done');
+      return this.cb(this.writeStream);
+    }
     fs.readFile(nextFile, (err, data) => {
-      if (err) return console.log(err);
-
-      newArray.push(data.toString());
-      console.log(newArray);
-      console.log(data.toString('hex', 0, 8));
-      ee.emit('done', fileArray);
+      if (err) return process.stderr.write(err);
+      this.writeStream.write(data.toString('hex', 0, 8));
+      this.ee.emit('done', fileArray);
     });
   });
+};
 
-  ee.files = ['three.txt', 'two.txt', 'one.txt'];
-  ee.emit('done', ee.files);
+FileParser.prototype.start = function() {
+  this.ee.emit('done', this.files);
+};

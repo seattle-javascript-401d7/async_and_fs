@@ -1,14 +1,27 @@
+'use strict';
 const chai = require('chai');
-const fs = require('fs');
 const expect = chai.expect;
-const async = require(__dirname + '/../lib/async');
+const FileParser = require(__dirname + '/../lib/async');
 
-var files = [__dirname + '/../lib/three.txt',__dirname + '/../lib/two.txt',__dirname + '/../lib/one.txt'];
+describe('async in the right order', () => {
+  beforeEach(() => {
+    this.files = [ __dirname + '/three.txt',
+    __dirname + '/two.txt',
+    __dirname + '/one.txt'];
 
-describe('this function', () => {
-  it('should pass', function() {
-    fs.readFile(__dirname + '/../lib/one.txt', (err, data) => {
-      expect(data.toString()).to.eql('first code to run\n');
-    });
+    this.testStream = {
+      data: '',
+      write: function(input) {
+        this.data += input;
+      }
+    };
+  });
+
+  it('should read files in order via async', (done) => {
+    var fp = new FileParser(this.files, function(stream) {
+      expect(stream.data).to.eql('666972737420636f7365636f6e642063746869726420636fdone');
+      done();
+    }, this.testStream);
+    fp.start();
   });
 });
