@@ -14,7 +14,8 @@ ee.on("One:done", (data1) => {
     console.log(data2.toString("hex", 0, 8));
     orderArray.push(2);
     ee.emit("Two:done", data2);
-  });});
+  });
+});
 ee.on("Two:done", (data2) => {
   fs.readFile("three.txt", (err, data3) => {
     console.log(data3.toString("hex", 0, 8));
@@ -23,4 +24,4 @@ ee.on("Two:done", (data2) => {
     ee.emit("Three:done", data3);
   });
 });
-  module.exports = orderArray;
+module.exports = orderArray;

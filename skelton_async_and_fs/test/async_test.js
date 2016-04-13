@@ -33,7 +33,7 @@ describe("file order", () => {
     done();
   });
   it("should return orderArray, which represents the order in which the text files were pushed", function(done) {
-    expect(async).to.eql(expected);
+    expect(async).to.deep.equal(expected);
     done();
   });
 });
