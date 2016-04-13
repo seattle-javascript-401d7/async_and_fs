@@ -22,7 +22,7 @@ describe('Test .on() function', function() {
         var hexData = data.toString('hex', 0, 8);
         // check to see if return was hexadecimal and 16 characters long
         expect(hexData).to.have.lengthOf(16);
-        expect(hexData).to.match(/^[0-9A-F]+$/);
+        expect(hexData).to.match(/^[0-9A-Fa-f]+$/);
         console.log(hexData);
         ee.emit('done', fileArray);
       });
