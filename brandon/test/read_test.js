@@ -8,10 +8,10 @@ describe('files to be read', () => {
     expect(Array.isArray(ee.files)).to.eql(true);
   });
 
-  it('should check if the result is 16 character hexadecimal', function(done) {
+  it('should check if the result is 16 character hexadecimal', (done) => {
     ee.on('data', (fileArray) => {
       var nextFile = fileArray.pop();
-      if(!nextFile) done();
+      if (!nextFile) done();
       expect(fileArray).to.not.include(nextFile);
       fs.readFile(nextFile, (err, data) => {
         if (err) return console.log(err);
@@ -24,5 +24,5 @@ describe('files to be read', () => {
     });
     ee.emit('done', ee.files);
     done();
-  })
+  });
 });
