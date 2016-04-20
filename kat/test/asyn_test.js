@@ -45,5 +45,6 @@ describe('Correct order of results', function() {
         });
       });
     });
+    done();
   });
 });
