@@ -4,7 +4,7 @@
   "description": "Using asynchronous functions to read 3 different files then test the results",
   "main": "index.js",
   "directories": {
-    "test": "test"
+    "test": "mocha"
   },
   "dependencies": {},
   "devDependencies": {
