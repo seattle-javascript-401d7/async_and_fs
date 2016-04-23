@@ -1,0 +1,27 @@
+{
+  "name": "FS_and_async",
+  "version": "1.0.0",
+  "description": "use exports and handling async without promises",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/KMSkelton/async_and_fs"
+  },
+  "devDependencies": {
+    "chai": "~3.5.0",
+    "gulp": "~3.9.0",
+    "gulp-eslint": "^2.0.0",
+    "gulp-mocha": "^2.2.0",
+    "mocha": "~2.4.5"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/KMSkelton/async_and_fs/issues"
+  },
+  "homepage": "https://github.com/KMSkelton/async_and_fs#readme"
+}
