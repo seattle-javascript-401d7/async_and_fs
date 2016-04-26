@@ -14,7 +14,7 @@ function checkAllLoaded() {
 }
 
 process.nextTick(() => {
-  fs.readFile('one.txt', (err, data) => {
+  fs.readFile('textfiles/one.txt', (err, data) => {
     if (err) return console.log(err);
 
     console.log('first file ' + data.toString('hex',0,8));
@@ -25,7 +25,7 @@ process.nextTick(() => {
 });
 process.nextTick(() => {
   ee.on('one:done', (data) => {
-    fs.readFile('two.txt', (err, data) => {
+    fs.readFile('textfiles/two.txt', (err, data) => {
       if (err) return console.log(err);
 
       console.log('second file ' + data.toString('hex',0,8));
@@ -37,7 +37,7 @@ process.nextTick(() => {
 });
 process.nextTick(() => {
   ee.on('two:done', (data) => {
-    fs.readFile('three.txt', (err, data) => {
+    fs.readFile('textfiles/three.txt', (err, data) => {
       if (err) return console.log(err);
 
       console.log('third file ' + data.toString('hex',0,8));

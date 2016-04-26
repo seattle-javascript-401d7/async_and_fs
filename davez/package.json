@@ -1,0 +1,22 @@
+{
+  "name": "davez",
+  "version": "1.0.0",
+  "description": "this is an app that demonstrates asynchrounous file reading of three text files. The onject of this assignment is to make sure that each file is done being read and printed to the console before the next one is started. This is done with event emitters, which listens for a specific function to be finished and causes the next one to run",
+  "main": "async2.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "dzknj@outlook.com",
+  "license": "MIT",
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "gulp": "^3.9.1",
+    "gulp-eslint": "^2.0.0",
+    "gulp-mocha": "^2.2.0",
+    "mocha": "^2.4.5"
+  }
+}
