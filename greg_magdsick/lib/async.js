@@ -11,14 +11,14 @@ const ShowFile = module.exports = exports = function(fileArray, cb, writeSpace) 
   this.ee.on('done', (files) => {
     var nextFile = fileArray.pop();
     if (!nextFile) {
-      this.writeSpace.write('done');
+      this.writeSpace.write('done\n');
       return this.cb(this.writeSpace);
     }
 
     fs.readFile(nextFile, (err, data) => {
       if (err) return process.stderr.write(err);
 
-      this.writeSpace.write(data.toString('hex', 0, 8));
+      this.writeSpace.write(data.toString('hex', 0, 8) + '\n');
       this.ee.emit('done', files);
     });
   });
