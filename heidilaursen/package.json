@@ -1,0 +1,29 @@
+{
+  "name": "heidilaursen",
+  "version": "1.0.0",
+  "description": "async fs assignment and test",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "./node_modules/mocha/bin/mocha test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pnwlady/async_and_fs.git"
+  },
+  "author": "heidi laursen",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/pnwlady/async_and_fs/issues"
+  },
+  "homepage": "https://github.com/pnwlady/async_and_fs#readme",
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "gulp": "^3.9.1",
+    "gulp-eslint": "^2.0.0",
+    "gulp-mocha": "^2.2.0",
+    "mocha": "^2.4.5"
+  }
+}
