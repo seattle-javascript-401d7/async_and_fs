@@ -5,29 +5,40 @@ const fs = require('fs');
 
 const ee = new EE();
 
-var files = ['one.txt', 'two.txt', 'three.txt'];
+var one = 'one.txt';
+var two = 'two.txt';
+var three = 'three.txt';
 
-fs.readFile(__dirname + '/../txt/one.txt', (err, data1) => {
+var fileArray = [];
+
+fs.readFile(__dirname + '/../txt/one.txt', function (err, data) {
   if (err) return console.log(err);
-  console.log(data1.toString('hex', 0, 8));
 
-  ee.emit('two', data1);
+  ee.emit('one:done', data);
 });
 
-ee.on('two', (data2) => {
-  fs.readFile(__dirname + '/../txt/two.txt', (err, data2) => {
+ee.on('one:done', function (data) {
+  console.log(data.toString('hex', 0, 8));
+  fs.readFile(__dirname + '/../txt/two.txt', function (err, data) {
     if (err) return process.stdout(err);
-    console.log(data2.toString('hex', 0, 8));
-
-    ee.emit('three', data2);
+    fileArray.push(one);
+    ee.emit('two:done', data);
   });
 });
 
-ee.on('three', (data3) => {
-  fs.readFile(__dirname + '/../txt/three.txt', (err, data3) => {
+ee.on('two:done',function (data) {
+  console.log(data.toString('hex', 0, 8));
+  fs.readFile(__dirname + '/../txt/three.txt', function (err, data) {
     if (err) return process.stdout(err);
-    console.log(data3.toString('hex', 0, 8));
-
-    ee.emit(data3);
+    fileArray.push(two);
+    ee.emit('three:done', data);
   });
 });
+
+ee.on('three:done', function (data) {
+  console.log(data.toString('hex', 0, 8));
+  fileArray.push(three);
+  console.log(fileArray);
+})
+
+module.exports = exports = fileArray;
