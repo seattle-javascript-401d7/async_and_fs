@@ -1,10 +1,10 @@
-const chai = require('chai');
-const expect = chai.expect;
-const Async = require(__dirname + '/../async2');
-const fs = require('fs');
+const expect = require('chai').expect;
+const asyncReader = require(__dirname + '/../async2');
 
-describe('the async file', () => {
-  it('should read files asynchronously', (done) => {
+describe('the async file reader', () => {
+  it('should read all files', (done) => {
+    expect(asyncReader.dataArray.length).to.eql(3);
     done();
+    asyncReader.start();
   })
 })
