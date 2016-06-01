@@ -1,0 +1,19 @@
+{
+  "name": "fs_and_async",
+  "version": "1.0.0",
+  "description": "Using fs and doing async with promises",
+  "main": "async.js",
+  "scripts": {
+    "test": "/test/async_test.js"
+  },
+  "author": "Gene Troy",
+  "license": "ISC",
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "eslint": "^2.7.0",
+    "gulp": "^3.9.1",
+    "gulp-eslint": "^2.0.0",
+    "gulp-mocha": "^2.2.0",
+    "mocha": "^2.5.3"
+  }
+}
